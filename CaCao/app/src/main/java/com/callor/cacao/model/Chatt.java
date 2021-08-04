@@ -1,4 +1,4 @@
-package com.rudgjs8080.hellochatt.model;
+package com.callor.cacao.model;
 
 public class Chatt {
 
