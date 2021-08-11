@@ -5,6 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.rudgjs8080.topnews.databinding.ActivityMainBinding;
+import com.rudgjs8080.topnews.service.NaverService;
+import com.rudgjs8080.topnews.service.impl.NaverNewsServiceImplV1;
+
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +42,14 @@ public class MainActivity extends AppCompatActivity {
          */
         main_binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(main_binding.getRoot());
+
+        Date date = new Date(System.currentTimeMillis());
+        SimpleDateFormat sd = new SimpleDateFormat("yyy-MM-dd");
+        String curDate = sd.format(date);
+
+
+        NaverService naverService = new NaverNewsServiceImplV1(main_binding.newsListView);
+        naverService.getNews(curDate);
 
 
     }
